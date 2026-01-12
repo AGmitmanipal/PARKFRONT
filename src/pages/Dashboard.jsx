@@ -26,7 +26,7 @@ const Dashboard = () => {
       try {
         setZonesError(null);
         // Use standard URL fallback
-        const apiUrl = ZONES_API_BASE_URL || 'http://localhost:5000';
+        const apiUrl = ZONES_API_BASE_URL;
         const res = await axios.get(apiUrl);
         const zonesData = Array.isArray(res.data) ? res.data : [];
         setZones(zonesData);

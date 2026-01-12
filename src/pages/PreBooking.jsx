@@ -19,8 +19,8 @@ export default function PreBooking() {
   const [processing, setProcessing] = useState(false);
   const [msg, setMsg] = useState(null);
 
-  const API_BASE = ENV.ZONES_API_BASE_URL || "http://localhost:5000";
-  const RESERVATIONS_BASE = ENV.RESERVATIONS_API_BASE_URL || "http://localhost:5000";
+  const API_BASE = ENV.ZONES_API_BASE_URL;
+  const RESERVATIONS_BASE = ENV.RESERVATIONS_API_BASE_URL;
 
   const fetchZones = async () => {
     try {

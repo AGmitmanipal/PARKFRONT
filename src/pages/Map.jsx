@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { ENV } from "../config/env";
 
 // 🔐 Mapbox token
 const MAPBOX_TOKEN = "pk.eyJ1Ijoic3ViaGFtcHJlZXQiLCJhIjoiY2toY2IwejF1MDdodzJxbWRuZHAweDV6aiJ9.Ys8MP5kVTk5P9V2TDvnuDg" || "";
@@ -77,7 +78,7 @@ const Map = () => {
 
     const fetchZoneData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/");
+        const res = await fetch(`${ENV.ZONES_API_BASE_URL}/`);
         if (res.ok) {
           const zones = await res.json();
           const updated = zones.find(z => z._id === initialZone._id);
@@ -327,7 +328,7 @@ const Map = () => {
         toTime
       };
 
-      const res = await fetch("http://localhost:5000/reserve", {
+      const res = await fetch(`${ENV.ZONES_API_BASE_URL}/reserve`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
